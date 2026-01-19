@@ -74,6 +74,14 @@ This creates `prd.json` with user stories structured for autonomous execution.
 
 Default is 10 iterations.
 
+### Configuration
+
+Override defaults with environment variables:
+
+- `RALPH_ITERATION_TIMEOUT_SECONDS` (default `7200`, set to `0` to disable)
+- `RALPH_MAX_STAGNANT_ITERATIONS` (default `5`, set to `0` to disable)
+- `RALPH_LOG_DIR` (default `./logs`)
+
 Ralph will:
 1. Create a feature branch (from PRD `branchName`)
 2. Pick the highest priority story where `passes: false`
@@ -93,6 +101,7 @@ Ralph will:
 | `prd.json` | User stories with `passes` status (the task list) |
 | `prd.json.example` | Example PRD format for reference |
 | `progress.txt` | Append-only learnings for future iterations |
+| `logs/` | Per-iteration raw outputs (created at runtime) |
 | `.opencode/skills/prd/` | Skill for generating PRDs |
 | `.opencode/skills/ralph/` | Skill for converting PRDs to JSON |
 
@@ -142,7 +151,7 @@ Frontend stories must include "Verify in browser using dev-browser skill" in acc
 
 ### Stop Condition
 
-When all stories have `passes: true`, Ralph outputs `<promise>COMPLETE</promise>` and the loop exits.
+Ralph exits when all stories have `passes: true` in `prd.json`. The `<promise>COMPLETE</promise>` signal is logged, but PRD state is the source of truth.
 
 ## Debugging
 
@@ -154,6 +163,9 @@ cat prd.json | jq '.userStories[] | {id, title, passes}'
 
 # See learnings from previous iterations
 cat progress.txt
+
+# See per-iteration logs
+ls logs/
 
 # Check git history
 git log --oneline -10

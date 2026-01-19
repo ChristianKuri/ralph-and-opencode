@@ -8,7 +8,13 @@ You are an autonomous coding agent working on a software project.
 2. Read the progress log at `progress.txt` (check Codebase Patterns section first)
 3. Check you're on the correct branch from PRD `branchName`. If not, check it out or create from main.
 4. Pick the **highest priority** user story where `passes: false`
-5. Implement that single user story
+5. Implement that single user story using the compound loop below
+   - Load the `compound-engineering` skill
+   - Plan (40%): Research approaches, synthesize information into detailed implementation plans
+   - Work (20%): Execute the plan systematically with continuous validation
+   - Review (20%): Evaluate output quality and identify learnings
+   - Compound (20%): Feed results back into the system to make the next loop better
+   - Add or update tests required by the story
 6. Run quality checks (e.g., typecheck, lint, test - use whatever your project requires)
 7. Update AGENTS.md files if you discover reusable patterns (see below)
 8. If checks pass, commit ALL changes with message: `feat: [Story ID] - [Story Title]`
@@ -87,6 +93,11 @@ For any story that changes UI, you MUST verify it works in the browser:
 4. Take a screenshot if helpful for the progress log
 
 A frontend story is NOT complete until browser verification passes.
+
+### Dev Browser MCP Notes
+- Use Chrome DevTools MCP tools through the `dev-browser` skill.
+- Default flow: `list_pages` → `navigate_page`/`new_page` → `wait_for` → `take_screenshot`.
+- Always check `list_console_messages`; inspect requests with `list_network_requests` if needed.
 
 ## Stop Condition
 

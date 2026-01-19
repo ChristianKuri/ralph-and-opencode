@@ -31,18 +31,18 @@ chmod +x scripts/ralph/ralph.sh
 Copy the skills to your OpenCode config for use across all projects:
 
 ```bash
-cp -r .opencode/skill/prd ~/.config/opencode/skill/
-cp -r .opencode/skill/ralph ~/.config/opencode/skill/
+cp -r .opencode/skills/prd ~/.config/opencode/skills/
+cp -r .opencode/skills/ralph ~/.config/opencode/skills/
 ```
 
 Or use the Claude-compatible location:
 
 ```bash
-cp -r .opencode/skill/prd ~/.claude/skills/
-cp -r .opencode/skill/ralph ~/.claude/skills/
+cp -r .opencode/skills/prd ~/.claude/skills/
+cp -r .opencode/skills/ralph ~/.claude/skills/
 ```
 
-OpenCode automatically discovers skills from `.opencode/skill/` (project-local) or `~/.config/opencode/skill/` and `~/.claude/skills/` (global).
+OpenCode automatically discovers skills from `.opencode/skills/` (project-local) or `~/.config/opencode/skills/` and `~/.claude/skills/` (global).
 
 ## Workflow
 
@@ -93,8 +93,8 @@ Ralph will:
 | `prd.json` | User stories with `passes` status (the task list) |
 | `prd.json.example` | Example PRD format for reference |
 | `progress.txt` | Append-only learnings for future iterations |
-| `.opencode/skill/prd/` | Skill for generating PRDs |
-| `.opencode/skill/ralph/` | Skill for converting PRDs to JSON |
+| `.opencode/skills/prd/` | Skill for generating PRDs |
+| `.opencode/skills/ralph/` | Skill for converting PRDs to JSON |
 
 ## Critical Concepts
 

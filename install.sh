@@ -16,6 +16,13 @@ mkdir -p "$TARGET_DIR"
 cp "$RALPH_DIR/ralph.sh" "$TARGET_DIR/"
 cp "$RALPH_DIR/prompt.md" "$TARGET_DIR/"
 
+# Copy skills if they exist
+if [ -d "$RALPH_DIR/.opencode/skills" ]; then
+  mkdir -p "$TARGET_DIR/.opencode"
+  cp -r "$RALPH_DIR/.opencode/skills" "$TARGET_DIR/.opencode/"
+  echo "✓ Copied skills to $TARGET_DIR/.opencode/skills/"
+fi
+
 # Make ralph.sh executable
 chmod +x "$TARGET_DIR/ralph.sh"
 
